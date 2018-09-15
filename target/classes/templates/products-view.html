@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Products</title>
+    <link rel="stylesheet" th:href="@{/css/products-view.css}" media="all" />
+</head>
+
+    <header>
+        <div>
+            <span>List of products</span>
+        </div>
+    </header>
+
+    <div class="table-div">
+    <table>
+        <th>Product</th>
+        <th>Price</th>
+        <th>Actions</th>
+
+        <tr th:each="product : ${listOfProducts}">
+            <td th:text="${product.name}">Product</td>
+            <td th:text="${product.price} + ' zl'">Price</td>
+            <td>
+                <ul>
+                    <li><a th:href="@{/products/edit-product-id={id}(id=${product.id})}">Edit</a></li>
+                    <li><a th:href="@{/products/remove-product-id={id}(id=${product.id})}">Remove</a></li>
+                    <li><a th:href="@{/products/product-details-id={id}(id=${product.id})}">Show details</a></li>
+                </ul>
+            </td>
+        </tr>
+        <tr class="button-row">
+            <td colspan="3">
+                <a th:href="@{/products/add-form}"><input type="button" value="Add a new product to the list" /></a>
+            </td>
+        </tr>
+    </table>
+    </div>
+
+    <footer>
+        <div>
+            <span>Place for fancy company name, logo, contact information, etc.</span><br/>
+            <span>Today is: </span>
+            <span th:text="${generatedDate}">Local date genereated when the page is opened</span>
+        </div>
+    </footer>
+
+</body>
+</html>

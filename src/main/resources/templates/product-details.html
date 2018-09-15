@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Product details</title>
+    <link rel="stylesheet" th:href="@{/css/product-details.css}" media="all" />
+</head>
+
+<body>
+
+    <header>
+        <div>
+            <span>Product's detailed information</span>
+        </div>
+    </header>
+
+    <div class="table-div">
+        <table>
+            <th colspan="2">Basic information</th>
+            <tr>
+                <td class="detail-alias">Product's ID:</td>
+                <td class="detail-data" th:text="${product.id}"></td>
+            </tr>
+            <tr>
+                <td class="detail-alias">Name: </td>
+                <td class="detail-data" th:text="${product.name}"></td>
+            </tr>
+            <tr>
+                <td class="detail-alias">Brand: </td>
+                <td class="detail-data" th:text="${product.brand}"></td>
+            </tr>
+            <tr>
+                <td class="detail-alias">Price: </td>
+                <td class="detail-data" th:text="${product.price} + ' zl'"></td>
+            </tr>
+
+            <th colspan="2">Description</th>
+            <tr>
+                <td class="description-cell" colspan="2" th:text="${product.description}"></td>
+            </tr>
+        </table>
+        <div class="links-div">
+            <a th:href="@{/products/edit-product-id={id}(id=${product.id})}"><input class="edit-button" type="button" value="Edit product" /></a>
+            <br/>
+            <a class="back-link" th:href="@{/products}">Back to the products' list</a>
+        </div>
+
+    </div>
+
+    <footer>
+        <div>
+            <span>Place for fancy company name, logo, contact information, etc.</span><br/>
+            <span>Today is: </span>
+            <span th:text="${generatedDate}">Local date genereated when the page is opened</span>
+        </div>
+    </footer>
+
+</body>
+</html>
